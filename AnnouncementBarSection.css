@@ -1,8 +1,8 @@
 /*This Code is Licensed by Will-Myers.com*/
 
-.announcement-bar-section{
+body:not(.sqs-edit-mode-active) .footer-announcement-bar-section{
+  display:none;
 }
-
 
 .wm-custom-announcement-bar .sqs-announcement-bar-close{
   z-index: 1
