@@ -43,6 +43,9 @@
       });
     }
     loadPluginImages();
+    
+    //Global Init
+    Squarespace.Squarespace.initializeLayoutBlocks(Y)
   }
 
   /** 
