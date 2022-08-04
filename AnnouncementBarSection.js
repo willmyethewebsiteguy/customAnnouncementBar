@@ -4,10 +4,10 @@
 ========== */
 (function(){  
   const aBDropzone = document.querySelector('.sqs-announcement-bar-dropzone'),
-        section = document.querySelector('#footer-sections [data-wm-plugin="announcement-bar-section"]').closest('.page-section');
+        section = document.querySelector('#footer-sections [data-wm-plugin="announcement-bar-section"]')?.closest('.page-section');
 
   //Hide Section in Footer
-  section.classList.add('footer-announcement-bar-section');
+  section?.classList.add('footer-announcement-bar-section');
 
   function moveSection() {
     let aBar = aBDropzone.querySelector('.sqs-announcement-bar'),
@@ -67,7 +67,7 @@
   }
   
   window.setTimeout(function(){
-    aBDropzone.classList.add('loaded')
+    aBDropzone?.classList.add('loaded')
   }, 300);
 
   
