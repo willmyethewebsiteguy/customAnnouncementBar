@@ -45,7 +45,7 @@
     loadPluginImages();
     
     //Global Init
-    Squarespace.Squarespace.initializeLayoutBlocks(Y)
+    Squarespace?.initializeLayoutBlocks(Y)
   }
 
   /** 
