@@ -1,7 +1,13 @@
 /*This Code is Licensed by Will-Myers.com*/
-
 body:not(.sqs-edit-mode-active) .footer-announcement-bar-section{
   display:none;
+}
+.sqs-announcement-bar-dropzone{
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.sqs-announcement-bar-dropzone.loaded{
+  opacity: 1;
 }
 
 .wm-custom-announcement-bar .sqs-announcement-bar-close{
@@ -15,7 +21,6 @@ body:not(.sqs-edit-mode-active) .footer-announcement-bar-section{
 }
 .announcement-bar-section .content-wrapper{
   display:flex;
-  flex-direction:column;
 }
 
 .wm-custom-announcement-bar #announcement-bar-text-inner-id {
@@ -23,15 +28,23 @@ body:not(.sqs-edit-mode-active) .footer-announcement-bar-section{
 }
 
 /*Fix Image Issue*/
-.announcement-bar-section .sqs-block-image img.loaded {
+.announcement-bar-section .sqs-block-image img.loaded, 
+.announcement-bar-section .section-background img {
   --position: 50% 50%;
   height: 100%;
   width: 100%;
   visibility: visible;
+  object-fit:cover;
+  object-position: var(--position);
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+/*Hide Code Block*/
+body:not(.sqs-edit-mode-active) .sqs-block.hide-block {
+  display:none;
 }
 
 /*Fix Global Animation Issue*/
