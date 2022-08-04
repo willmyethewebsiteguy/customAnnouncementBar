@@ -1,29 +1,30 @@
 /* ==========
- * SQS Edit Mode Breakpoint
+ * Custom Announcement Bar
  * This Code is licensed by Will-Myers.com 
 ========== */
 (function(){  
-  const aBDropzone = document.querySelector('.sqs-announcement-bar-dropzone');
+  const aBDropzone = document.querySelector('.sqs-announcement-bar-dropzone'),
+        section = document.querySelector('#footer-sections [data-wm-plugin="announcement-bar-section"]').closest('.page-section');
+
+  //Hide Section in Footer
+  section.classList.add('footer-announcement-bar-section');
 
   function moveSection() {
-    let section = document.querySelector('#footer-sections [data-wm-plugin="announcement-bar-section"]').closest('.page-section'),
-        showAB = Static.SQUARESPACE_CONTEXT.showAnnouncementBar;
-
-    if (!section || showAB !== true) return;
-
     let aBar = aBDropzone.querySelector('.sqs-announcement-bar'),
         innerTextEl = aBar.querySelector('#announcement-bar-text-inner-id'),
         container = aBar.querySelector('.sqs-announcement-bar-text'),
-        sectionClone = section.cloneNode(true);
+        sectionClone = section.cloneNode(true),
+        codeBlock =  sectionClone.querySelector('[data-wm-plugin="announcement-bar-section"]').closest('.sqs-block');
     
-    aBDropzone.classList.add('wm-custom-announcement-bar')
+    codeBlock.classList.add('hide-block')
+    aBDropzone.classList.add('wm-custom-announcement-bar', 'loaded');
     container.append(sectionClone);
-    container.querySelector('.content-wrapper').prepend(innerTextEl);
+    container.querySelector('.content-wrapper > .content').prepend(innerTextEl);
     sectionClone.classList.add('announcement-bar-section');
-    section.classList.add('footer-announcement-bar-section');
+    sectionClone.classList.remove('footer-announcement-bar-section');
 
     function loadPluginImages() {
-      let images = container.querySelectorAll('.summary-v2-block img, .sqs-block-image img');
+      let images = container.querySelectorAll('.summary-v2-block img, .sqs-block-image img, .section-background img');
       images.forEach(img => {
 
         img.classList.add('loaded');
@@ -57,20 +58,18 @@
       }
     });
   });
+  if (section) {
+    observer.observe(aBDropzone, { 
+      subtree: false, 
+      childList: true,
+      attributes: false,
+    });
+  }
+  
+  window.setTimeout(function(){
+    aBDropzone.classList.add('loaded')
+  }, 300);
 
-  observer.observe(aBDropzone, { 
-    subtree: false, 
-    childList: true,
-    attributes: false,
-  });
-  
-  
-  
-  
-  
-  
-  
-  
   
   /*FOR JUMPING INTO EDIT MODE*/
   
@@ -109,4 +108,4 @@
       attributes: true,
     });
   }
-}())
+}());
